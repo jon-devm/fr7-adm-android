@@ -1,0 +1,26 @@
+{
+  "appId": "br.com.vsscap.fr7adm",
+  "appName": "FR7 ADM",
+  "webDir": "www",
+  "server": {
+    "url": "https://jn-fr7-control.lovable.app",
+    "cleartext": false,
+    "allowNavigation": [
+      "jn-fr7-control.lovable.app",
+      "*.supabase.co"
+    ]
+  },
+  "android": {
+    "allowMixedContent": false,
+    "backgroundColor": "#05070d",
+    "appendUserAgent": "FR7App/Android"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1200,
+      "backgroundColor": "#05070d",
+      "showSpinner": false
+    }
+  },
+  "appendUserAgent": "FR7App/Android"
+}

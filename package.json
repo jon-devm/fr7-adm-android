@@ -1,0 +1,18 @@
+{
+  "name": "fr7-adm-android",
+  "version": "2.2.0",
+  "private": true,
+  "description": "FR7 ADM Control \u2014 app Android (APK) do sistema de portaria",
+  "scripts": {
+    "sync": "cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/android": "6.2.1",
+    "@capacitor/app": "6.0.2",
+    "@capacitor/core": "6.2.1",
+    "@capacitor/splash-screen": "6.0.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "6.2.1"
+  }
+}
