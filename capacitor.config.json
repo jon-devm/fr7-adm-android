@@ -20,6 +20,13 @@
       "launchShowDuration": 1200,
       "backgroundColor": "#05070d",
       "showSpinner": false
+    },
+    "PushNotifications": {
+      "presentationOptions": [
+        "badge",
+        "sound",
+        "alert"
+      ]
     }
   },
   "appendUserAgent": "FR7App/Android"

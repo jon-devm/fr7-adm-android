@@ -26,3 +26,10 @@ instala o Capacitor, gera o APK assinado e publica em **Releases**.
 - `www/index.html` — tela mostrada quando não há conexão.
 
 Uso licenciado. Venda ou redistribuição proibidas. © VSS CAP SYSTEMS.
+
+## Versão 3 (app nativo)
+
+- **Leitor de códigos nativo** (Google ML Kit): botão "Leitor do Android" no escanear, na ronda e na passagem de posto.
+- **Entrada por digital**: depois de entrar com a senha, o app oferece ativar. O acesso fica no cofre do Android (Keystore).
+- **Notificações push** (chat, novo cadastro, cadastro aprovado): precisam do segredo `GOOGLE_SERVICES_JSON` neste repositório e do `FIREBASE_SERVICE_ACCOUNT` no servidor do sistema. Sem eles, o APK funciona normalmente, só sem notificações.
+- **Sem internet**: abre a última versão guardada e continua registrando; envia tudo quando a rede volta.

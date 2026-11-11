@@ -1,18 +1,23 @@
 {
   "name": "fr7-adm-android",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "private": true,
   "description": "FR7 ADM Control \u2014 app Android (APK) do sistema de portaria",
   "scripts": {
     "sync": "cap sync android"
   },
   "dependencies": {
-    "@capacitor/android": "6.2.1",
-    "@capacitor/app": "6.0.2",
-    "@capacitor/core": "6.2.1",
-    "@capacitor/splash-screen": "6.0.3"
+    "@aparajita/capacitor-biometric-auth": "10.0.0",
+    "@aparajita/capacitor-secure-storage": "8.0.1",
+    "@capacitor-mlkit/barcode-scanning": "8.2.2",
+    "@capacitor/android": "8.6.0",
+    "@capacitor/app": "8.1.2",
+    "@capacitor/core": "8.6.0",
+    "@capacitor/network": "8.0.1",
+    "@capacitor/push-notifications": "8.1.3",
+    "@capacitor/splash-screen": "8.0.2"
   },
   "devDependencies": {
-    "@capacitor/cli": "6.2.1"
+    "@capacitor/cli": "8.6.0"
   }
 }

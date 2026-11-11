@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      APP_VERSION: "2.2.0"
+      APP_VERSION: "3.0.0"
     steps:
       - uses: actions/checkout@v4
 
@@ -24,10 +24,23 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 17
+          java-version: 21
 
       - name: Instalar dependências
         run: npm ci
+
+      - name: Firebase para notificações (segredo GOOGLE_SERVICES_JSON, opcional)
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: |
+          if [ -n "$GOOGLE_SERVICES_JSON" ]; then
+            printf '%s' "$GOOGLE_SERVICES_JSON" > android/app/google-services.json
+            # Avisa o site que este APK sabe receber notificações.
+            node -e 'const f="capacitor.config.json",c=require("./"+f);c.android.appendUserAgent=c.appendUserAgent="FR7App/Android FR7Push";require("fs").writeFileSync(f,JSON.stringify(c,null,2))'
+            echo "Notificações push: ligadas"
+          else
+            echo "::warning::Sem GOOGLE_SERVICES_JSON: o APK sai sem notificações push (o resto funciona)."
+          fi
 
       - name: Copiar configuração para o projeto Android
         run: npx cap sync android
@@ -67,4 +80,4 @@ jobs:
           gh release create "$TAG" "FR7-ADM-${APP_VERSION}.apk" \
             --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --latest \
             --title "FR7 ADM ${APP_VERSION} (build ${GITHUB_RUN_NUMBER})" \
-            --notes "APK do FR7 ADM Control para Android. Baixe FR7-ADM-${APP_VERSION}.apk no celular e instale (permita instalar apps desconhecidos se pedir)."
+            --notes "FR7 ADM ${APP_VERSION} — app Android com leitor de códigos nativo, entrada por digital, notificações e uso sem internet. Baixe FR7-ADM-${APP_VERSION}.apk no celular e instale (permita instalar apps desconhecidos se pedir)."
