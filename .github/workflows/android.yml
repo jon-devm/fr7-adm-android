@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      APP_VERSION: "3.0.0"
+      APP_VERSION: "3.0.1"
     steps:
       - uses: actions/checkout@v4
 
@@ -66,6 +66,8 @@ jobs:
           chmod +x gradlew
           ./gradlew assembleRelease --no-daemon
           cp app/build/outputs/apk/release/app-release.apk "$GITHUB_WORKSPACE/FR7-ADM-${APP_VERSION}.apk"
+          # Nome fixo: o sistema aponta para .../releases/latest/download/FR7-ADM.apk
+          cp app/build/outputs/apk/release/app-release.apk "$GITHUB_WORKSPACE/FR7-ADM.apk"
 
       - uses: actions/upload-artifact@v4
         with:
@@ -77,7 +79,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           TAG="v${APP_VERSION}-build${GITHUB_RUN_NUMBER}"
-          gh release create "$TAG" "FR7-ADM-${APP_VERSION}.apk" \
+          gh release create "$TAG" "FR7-ADM-${APP_VERSION}.apk" "FR7-ADM.apk" \
             --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --latest \
             --title "FR7 ADM ${APP_VERSION} (build ${GITHUB_RUN_NUMBER})" \
             --notes "FR7 ADM ${APP_VERSION} — app Android com leitor de códigos nativo, entrada por digital, notificações e uso sem internet. Baixe FR7-ADM-${APP_VERSION}.apk no celular e instale (permita instalar apps desconhecidos se pedir)."

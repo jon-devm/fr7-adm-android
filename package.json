@@ -1,6 +1,6 @@
 {
   "name": "fr7-adm-android",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": true,
   "description": "FR7 ADM Control \u2014 app Android (APK) do sistema de portaria",
   "scripts": {
