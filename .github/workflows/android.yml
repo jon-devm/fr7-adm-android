@@ -60,12 +60,11 @@ jobs:
           path: FR7-ADM-${{ env.APP_VERSION }}.apk
 
       - name: Publicar na página de versões (Releases)
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ env.APP_VERSION }}-build${{ github.run_number }}
-          name: FR7 ADM ${{ env.APP_VERSION }} (build ${{ github.run_number }})
-          body: |
-            APK do FR7 ADM Control para Android.
-            Baixe o arquivo FR7-ADM-${{ env.APP_VERSION }}.apk no celular e instale (permita "instalar apps desconhecidos" se pedir).
-          files: FR7-ADM-${{ env.APP_VERSION }}.apk
-          make_latest: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="v${APP_VERSION}-build${GITHUB_RUN_NUMBER}"
+          gh release create "$TAG" "FR7-ADM-${APP_VERSION}.apk" \
+            --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --latest \
+            --title "FR7 ADM ${APP_VERSION} (build ${GITHUB_RUN_NUMBER})" \
+            --notes "APK do FR7 ADM Control para Android. Baixe FR7-ADM-${APP_VERSION}.apk no celular e instale (permita instalar apps desconhecidos se pedir)."
