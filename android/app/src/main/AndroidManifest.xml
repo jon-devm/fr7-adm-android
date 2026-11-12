@@ -42,6 +42,9 @@
     <!-- Permissions -->
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Salvar PDFs em Documentos/FR7 (só Android 9 ou anterior pede esta permissão) -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- Câmera (etiquetas, código de barras, QR das rondas, ponto), localização (baixa e ponto) -->
     <uses-permission android:name="android.permission.CAMERA" />
